@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "966060290827",
+    "firebase_url": "https://bookmyvenue-86fe0.firebaseio.com",
+    "project_id": "bookmyvenue-86fe0",
+    "storage_bucket": "bookmyvenue-86fe0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966060290827:android:48e50abe2a8a93e9",
+        "android_client_info": {
+          "package_name": "com.product.bookmyvenue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966060290827-ebgqd2dapvs8nk7atutue55qm519b34c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.product.bookmyvenue",
+            "certificate_hash": "62c4e1514b9b33bbd9eaaaf73d1e62ec00b85cd9"
+          }
+        },
+        {
+          "client_id": "966060290827-3dsbaugl3p708174d20rl2cofsuj15hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW-nzlxHm1NwqCIcpy6KaHa3J0UmmVwoc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966060290827-3dsbaugl3p708174d20rl2cofsuj15hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
