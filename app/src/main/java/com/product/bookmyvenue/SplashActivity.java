@@ -52,12 +52,16 @@ public class SplashActivity extends AppCompatActivity {
 
         if (currentUser == null) {
 
-            Toast.makeText(this, "Need to login.", Toast.LENGTH_SHORT).show();
             // Need to login.
+            Toast.makeText(this, "Need to login.", Toast.LENGTH_SHORT).show();
+
         } else {
 
-            Toast.makeText(this, "Already logged in.", Toast.LENGTH_SHORT).show();
             // Already login.
+            Toast.makeText(this, "Already logged in.", Toast.LENGTH_SHORT).show();
+            UserProfileHandler userProfileHandler = new UserProfileHandler();
+            userProfileHandler.fetchUser(this, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+
         }
     }
 
