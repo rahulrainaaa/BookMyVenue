@@ -1,4 +1,4 @@
-package com.product.bookmyvenue;
+package com.product.bookmyvenue.handler.derived;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.product.bookmyvenue.handler.base.BaseHandler;
 
 /**
  * Handler class to handle the profile add, update, delete and query data.
@@ -39,23 +40,6 @@ public class UserProfileHandler extends BaseHandler {
 
                     }
                 });
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                if (task.getResult().exists()) {
-//
-//                    Map<String, Object> map = task.getResult().getData();
-//
-//                    Toast.makeText(context, "Data fetched", Toast.LENGTH_SHORT).show();
-//                } else {
-//
-//                    Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }, 3000);
-
 
     }
 

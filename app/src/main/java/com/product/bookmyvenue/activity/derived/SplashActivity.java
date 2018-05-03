@@ -1,10 +1,9 @@
-package com.product.bookmyvenue;
+package com.product.bookmyvenue.activity.derived;
 
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -18,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.product.bookmyvenue.R;
+import com.product.bookmyvenue.activity.base.BaseActivity;
+import com.product.bookmyvenue.handler.derived.UserProfileHandler;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  * 3. On OTP receiving, call signInWithPhoneAuthCredential() to verify the OTP and login.<br/>
  * 4. Call checkUserProfile() to get user profile (if it is existing user) and navigate to dashboard. If profile not found then (means: new user) navigate to create profile screen.
  */
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     public static final String TAG = "SplashActivity";
 
