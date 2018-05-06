@@ -1,6 +1,5 @@
 package com.product.bookmyvenue.activity.derived;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -74,8 +73,8 @@ public class SplashActivity extends BaseActivity {
         } else {
 
             // Already login.
-            startActivity(new Intent(this, DashboardActivity.class));
-            finish();
+//            startActivity(new Intent(this, DashboardActivity.class));
+//            finish();
 
         }
     }
@@ -176,8 +175,8 @@ public class SplashActivity extends BaseActivity {
                 .document(strMobile)
                 .set(user);
 
-        startActivity(new Intent(this, DashboardActivity.class));
-        finish();
+//        startActivity(new Intent(this, DashboardActivity.class));
+//        finish();
 
     }
 

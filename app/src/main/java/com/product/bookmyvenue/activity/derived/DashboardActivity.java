@@ -1,22 +1,15 @@
 package com.product.bookmyvenue.activity.derived;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.product.bookmyvenue.R;
-import com.product.bookmyvenue.activity.base.BaseActivity;
 
-/**
- * Activity class to handle dashboard UI.
- */
-public class DashboardActivity extends BaseActivity {
-
-    public static final String TAG = "DashboardActivity";
+public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
     }
-
 }
