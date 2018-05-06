@@ -1,5 +1,6 @@
 package com.product.bookmyvenue.activity.derived;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,16 +12,20 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.product.bookmyvenue.R;
+import com.product.bookmyvenue.User;
 import com.product.bookmyvenue.activity.base.BaseActivity;
-import com.product.bookmyvenue.handler.derived.UserProfileHandler;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -28,13 +33,14 @@ import java.util.concurrent.TimeUnit;
  * 1. Check SMS Permissions.<br/>
  * 2. On Login click, call initPhoneAuth() for OTP request.<br/>
  * 3. On OTP receiving, call signInWithPhoneAuthCredential() to verify the OTP and login.<br/>
- * 4. Call checkUserProfile() to get user profile (if it is existing user) and navigate to dashboard. If profile not found then (means: new user) navigate to create profile screen.
+ * 4. Update Name and mobile in FireStore database and navigate to dashboard.
  */
 public class SplashActivity extends BaseActivity {
 
     public static final String TAG = "SplashActivity";
 
 
+    private static final String FULL_NAME = "Tom Cruse";
     private FirebaseAuth mAuth;
 
     @Override
@@ -43,6 +49,14 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         askForSMSPermission();
         mAuth = FirebaseAuth.getInstance();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "name");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
+
+        FirebaseAnalytics.getInstance(this).logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
 
     }
 
@@ -60,9 +74,8 @@ public class SplashActivity extends BaseActivity {
         } else {
 
             // Already login.
-            Toast.makeText(this, "Already logged in.", Toast.LENGTH_SHORT).show();
-            UserProfileHandler userProfileHandler = new UserProfileHandler();
-            userProfileHandler.fetchUser(this, FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+            startActivity(new Intent(this, DashboardActivity.class));
+            finish();
 
         }
     }
@@ -116,7 +129,7 @@ public class SplashActivity extends BaseActivity {
                 if (task.isSuccessful()) {
 
                     Toast.makeText(SplashActivity.this, "SignIn Successful", Toast.LENGTH_SHORT).show();
-                    checkUserProfile();
+                    updateProfile();
 
                 } else {
 
@@ -135,11 +148,36 @@ public class SplashActivity extends BaseActivity {
     }
 
     /**
-     * Method to check if the user profile exists then navigate to dashboard.
-     * If new user login, then navigate to edit profile screen.
+     * Method to update profile and navigate to dashboard screen.
      */
-    private void checkUserProfile() {
+    private void updateProfile() {
 
+        String strMobile = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String strCurrentDateTime = dateFormatter.format(new Date());
+
+        User user = new User();
+        user.setName(FULL_NAME);
+        user.setMobile(strMobile);
+        user.setCreatedOn(strCurrentDateTime);
+        user.setLastLogin(strCurrentDateTime);
+        user.setRate(0.0f);
+        user.setRateCount(0);
+        user.setVisit(0);
+        user.setEmail("");
+        user.setAddress("");
+        user.setPic("");
+        user.setPosts(0);
+        user.setGeo("");
+
+        FirebaseFirestore.getInstance()
+                .collection("activeUsers")
+                .document(strMobile)
+                .set(user);
+
+        startActivity(new Intent(this, DashboardActivity.class));
+        finish();
 
     }
 
