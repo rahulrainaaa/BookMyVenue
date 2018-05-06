@@ -16,15 +16,15 @@
             android:gravity="center"
             android:text="@string/bookmyvenue"
             android:textColor="@color/colorWhite"
-            android:textSize="35sp"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
 
         <EditText
             android:id="@+id/et_name"
-            android:layout_width="250dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="70dp"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/shape_border_corner_radius"
             android:fontFamily="sans-serif-smallcaps"
             android:gravity="center"
@@ -41,8 +41,8 @@
 
         <EditText
             android:id="@+id/et_mobile"
-            android:layout_width="250dp"
-            android:layout_height="35dp"
+            android:layout_width="400dp"
+            android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_border_corner_radius"
             android:fontFamily="sans-serif-smallcaps"
@@ -61,7 +61,7 @@
         <Button
             android:id="@+id/btn_verify"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_border_corner_radius"
             android:text="@string/verify"
@@ -81,7 +81,7 @@
         android:paddingBottom="5dp"
         android:text="@string/app_quote"
         android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
 </RelativeLayout>
 
