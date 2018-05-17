@@ -26,7 +26,8 @@
         </activity>
         <activity
             android:name=".activity.derived.DashboardActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
